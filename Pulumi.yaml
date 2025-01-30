@@ -1,0 +1,10 @@
+name: github-pulumi
+description: srendipity-lab Pulumi project to manage org repositories
+runtime:
+  name: python
+  options:
+    toolchain: poetry
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: github-python

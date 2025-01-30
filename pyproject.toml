@@ -1,0 +1,58 @@
+[tool]
+[tool.poetry]
+package-mode = false
+name = "github-pulumi"
+version = "0.1.0"
+description = "A project for managing GitHub resources with Pulumi."
+readme = "README.md"
+keywords = ["pulumi", "github", "cloud", "infrastructure-as-code"]
+
+[tool.poetry.dependencies]
+pulumi = ">=3.0.0,<4.0.0"
+pulumi-github = ">=4.0.0,<5.0.0"
+python = "^3.9"
+setuptools = "^75.8.0"
+
+[tool.poetry.group.dev.dependencies]
+mypy = { extras = ["faster-cache"], version = "^1.14.1" }
+pydantic = "^2.10.6"
+pylint = "^3.3.4"
+ruff = "^0.9.4"
+
+[tool.ruff]
+output-format = "github"
+
+[tool.ruff.lint]
+fixable = ["ALL"]
+unfixable = []
+select = ["ALL"]
+# ignore = ["D2", "D4", "ANN", "COM812", "ISC001", "ERA001"]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint.isort]
+case-sensitive = true
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.pycodestyle]
+max-line-length = 150
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
+strict = true
+pretty = true
+show_error_codes = true
+show_error_context = true
+implicit_reexport = true
+namespace_packages = true
+
+[tool.pylint."MESSAGES CONTROL"]
+persistent = "no"
+disable = ["fixme", "line-too-long"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
