@@ -26,6 +26,7 @@ output-format = "github"
 fixable = ["ALL"]
 unfixable = []
 select = ["ALL"]
+ignore = ["D203", "D212", "COM812"]
 # ignore = ["D2", "D4", "ANN", "COM812", "ISC001", "ERA001"]
 
 [tool.ruff.format]
