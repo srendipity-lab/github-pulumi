@@ -13,4 +13,4 @@ concurrency:
 
 jobs:
   python-ci:
-    uses: srendipity-lab/github-pulumi/.github/workflows/reusable-python-ci.yml@python_ci
+    uses: srendipity-lab/github-pulumi/.github/workflows/reusable-python-ci.yml@main
