@@ -25,7 +25,7 @@ github.Repository(
     name="github-pulumi",
     has_downloads=False,
     has_issues=True,
-    has_projects=False,
+    has_projects=True,
     has_wiki=False,
     vulnerability_alerts=True,
     description="Pulumi project to manage srendipity-lab GitHub Organization",
