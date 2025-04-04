@@ -1,0 +1,16 @@
+name: Python CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    paths:
+      - .github/workflows/python-ci.yml
+
+concurrency:
+  group: ghas-github-pulumi-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python-ci:
+    uses: srendipity-lab/github-pulumi/.github/workflows/python-ci.yml@python-ci-v0
