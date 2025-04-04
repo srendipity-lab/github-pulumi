@@ -22,6 +22,7 @@ for user in owners:
 
 github.Repository(
     "github-pulumi",
+    delete_branch_on_merge=True,
     name="github-pulumi",
     has_downloads=False,
     has_issues=True,
