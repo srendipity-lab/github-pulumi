@@ -10,6 +10,7 @@ owners = [
     "notdodo",
     "fam4r",
     "k3t4am4",
+    "seintzx",
 ]
 
 for user in owners:
