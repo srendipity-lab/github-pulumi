@@ -1,5 +1,7 @@
 """A GitHub Python Pulumi program."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass
 from enum import StrEnum
 
@@ -34,25 +36,39 @@ github.Repository(
 
 
 class Roles(StrEnum):
+    """GitHub roles for a team member."""
+
     ADMIN = "maintainer"
     MEMBER = "member"
 
 
 @dataclass
 class Member:
+    """GitHub team's member."""
+
     username: str
     role: Roles
 
 
 class Team(pulumi.ComponentResource):
+    """
+    A Pulumi component resource to create a GitHub team with customizable options.
+
+    :param name [str]: The name of the team to create.
+    :param description [str | None]: A short description of the team.
+    :param members list[Member]: A list of the Members for the team.
+    :param opts [pulumi.ResourceOptions | None]: Pulumi resource options for the custom resource.
+    """
+
     def __init__(
         self,
-        team_name: str,
+        name: str,
         members: list[Member],
         description: str | None = "",
-        opts: pulumi.ResourceOptions = None,
+        opts: pulumi.ResourceOptions | None = None,
     ) -> None:
-        self.resource_name = team_name.lower().replace(" ", "-")
+        """Initialize the Team class."""
+        self.resource_name = name.lower().replace(" ", "-")
         super().__init__(
             "sredipity-lab::github::TeamWithMembers",
             self.resource_name,
@@ -61,7 +77,7 @@ class Team(pulumi.ComponentResource):
         )
         self.team = github.Team(
             f"{self.resource_name}-team",
-            name=team_name,
+            name=name,
             description=description,
             create_default_maintainer=False,
             privacy="closed",
